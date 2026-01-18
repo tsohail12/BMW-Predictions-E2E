@@ -1,6 +1,7 @@
 COLUMNS:
   model: object
   year: int64
+  price: price
   transmission: object
   mileage: int64
   fuelType: object
@@ -10,4 +11,4 @@ COLUMNS:
 
 
 TARGET_COLUMN:
-  price: quantity
+  name: price
