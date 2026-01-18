@@ -1,6 +1,6 @@
 from car_price.constants import *
 from car_price.utils.common import read_yaml, create_directories
-from car_price.entity.config_entity import (DataIngestionConfig, DataValidationConfig)
+from car_price.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -45,3 +45,23 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        params = self.params
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            numerical_features=params.features.numerical,
+            categorical_features=params.features.categorical,
+            target_column=params.features.target,
+            test_size=params.train_test_split.test_size,
+            random_state=params.train_test_split.random_state,
+            scaling=params.transformation.scaling,
+            encoding=params.transformation.encoding
+        )
+
+        return data_transformation_config

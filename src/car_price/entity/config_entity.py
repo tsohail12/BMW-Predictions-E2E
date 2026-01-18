@@ -16,3 +16,16 @@ class DataValidationConfig:
     STATUS_FILE: str
     unzip_data_dir: Path
     all_schema: dict
+    
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    data_path: Path
+    numerical_features: list
+    categorical_features: list
+    target_column: str
+    test_size: float
+    random_state: int
+    scaling: bool
+    encoding: str

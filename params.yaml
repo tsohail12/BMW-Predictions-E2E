@@ -1,1 +1,31 @@
-key: val
+# Model Training Parameters
+
+# Random Forest Hyperparameters
+RandomForest:
+  n_estimators: 300
+  max_depth: 30
+  min_samples_split: 5
+  min_samples_leaf: 1
+  max_features: 'sqrt'
+  random_state: 42
+  n_jobs: -1
+
+# Train-Test Split
+train_test_split:
+  test_size: 0.2
+  random_state: 42
+
+# Features to use
+features:
+  numerical: ['year', 'mileage', 'mpg', 'engineSize', 'tax']
+  categorical: ['model', 'transmission', 'fuelType']
+  target: 'price'
+
+# Data Transformation
+transformation:
+  scaling: True
+  encoding: 'label'  # label or onehot
+  
+# Model Evaluation Metrics
+evaluation:
+  metrics: ['r2_score', 'rmse', 'mae', 'mape']
