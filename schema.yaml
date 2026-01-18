@@ -1,7 +1,7 @@
 COLUMNS:
   model: object
   year: int64
-  price: price
+  price: int64
   transmission: object
   mileage: int64
   fuelType: object

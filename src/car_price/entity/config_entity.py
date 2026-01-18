@@ -29,3 +29,29 @@ class DataTransformationConfig:
     random_state: int
     scaling: bool
     encoding: str
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_data_path: Path
+    test_data_path: Path
+    model_name: str
+    n_estimators: int
+    max_depth: int
+    min_samples_split: int
+    min_samples_leaf: int
+    max_features: str
+    random_state: int
+    n_jobs: int
+    target_column: str
+
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    metric_file_name: Path
+    all_params: dict
+    target_column: str
+    metrics: list

@@ -1,0 +1,16 @@
+{
+    "metrics": {
+        "r2_score": 0.9450092150196169,
+        "rmse": 2666.670883448798,
+        "mae": 1582.305176517405,
+        "mape": 7.351185079892672
+    },
+    "model_parameters": {
+        "n_estimators": 300,
+        "max_depth": 30,
+        "min_samples_split": 5,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "random_state": 42
+    }
+}
