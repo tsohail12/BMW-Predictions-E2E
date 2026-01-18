@@ -1,0 +1,13 @@
+COLUMNS:
+  model: object
+  year: int64
+  transmission: object
+  mileage: int64
+  fuelType: object
+  tax: int64
+  mpg: float64
+  engineSize: float64
+
+
+TARGET_COLUMN:
+  price: quantity
