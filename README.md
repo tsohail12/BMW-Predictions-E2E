@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 
-This project is an **end-to-end Machine Learning application** that predicts the **price of used BMW cars** based on historical data and user-provided inputs.
+This project is an **end-to-end Machine Learning application** that predicts the **price of used BMW cars** based on historical data and inputs.
 It covers the **complete ML lifecycle** — from data ingestion to model deployment — and exposes predictions through a **FastAPI-powered web UI**.
 
 ---
@@ -10,7 +10,7 @@ It covers the **complete ML lifecycle** — from data ingestion to model deploym
 ## 🎯 Key Objectives
 
 * Design a **modular ML pipeline**
-* Handle **real-world data issues** (missing values, trailing spaces, unseen labels)
+* Handle **real-world data issues in transformation stage** (like missing values, trailing spaces, unseen labels)
 * Ensure **feature consistency** between training and inference
 * Serve predictions using **FastAPI + HTML**
 * Improve prediction reliability using **confidence intervals**
@@ -150,18 +150,13 @@ The dataset contains historical BMW car listings with features such as model, ye
 
 ---
 
-Absolutely 👍
-Here are **clean, professional additions** you can directly paste into your existing README.
-
----
-
 ## 📊 Dataset
 
 * **Dataset Source:**
-  👉 *Paste dataset link here*
+  👉 *kaggle.com(by Muhammad Shahzad)*
 
   ```
-  [ADD_DATASET_LINK_HERE]
+  [https://www.kaggle.com/datasets/algozee/bmw-dataset/data]
   ```
 
 * The dataset contains historical BMW car listings with features such as model, year, mileage, fuel type, transmission, and price.
@@ -170,13 +165,61 @@ Here are **clean, professional additions** you can directly paste into your exis
 
 ## 💱 Currency Assumption
 
-* The original dataset **did not explicitly specify the currency** for car prices.
-* Assumed:
+* The original dataset **did not explicitly specify the currency** for car price and road tax.
 * **British Pounds (£)** as the default currency for:
 
   * Model training
   * Predictions
   * UI display
+
+---
+
+## 🚀 How to Run the Project Locally
+
+Follow the steps below to set up and run the project on your local machine.
+
+### 1️⃣ Create and Activate Conda Environment
+
+```bash
+conda create -n 'env_name' python=version name -y
+conda activate 'env_name'
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3️⃣ Run the End-to-End ML Pipeline
+
+This will execute all pipeline stages (data ingestion → validation → transformation → training → evaluation) and generate artifacts and logs.
+
+```bash
+python main.py
+```
+
+📌 Pipeline logs will be available in the `logs/` directory.
+
+---
+
+### 4️⃣ Test Model Prediction (CLI Test)
+
+Run a quick sanity check to ensure the trained model is working correctly:
+
+```bash
+python test_prediction.py
+```
+
+---
+
+### 5️⃣ Run the Web Application (FastAPI + HTML UI)
+
+Start the FastAPI server to access the interactive UI:
+
+```bash
+uvicorn app:app --reload
+```
 
 ---
 
@@ -191,13 +234,53 @@ Here are **clean, professional additions** you can directly paste into your exis
 
 ---
 
-## 🧪 Model Confidence Interval
+## 🧪 Model Evaluation / Results
 
-The confidence interval provides:
+The final model was evaluated on a held-out test dataset using multiple regression performance metrics to ensure robustness and generalization.
 
-* A **price range** instead of a single value
-* Better **user trust**
-* Practical insight into **prediction uncertainty**
+### 📊 Evaluation Metrics
+
+| Metric       | Value       | Description                                |
+| ------------ | ----------- | ------------------------------------------ |
+| **R² Score** | **0.945**   | Explains ~94.5% of variance in car prices  |
+| **RMSE**     | **2666.67** | Average prediction error in GBP            |
+| **MAE**      | **1582.31** | Mean absolute deviation from actual prices |
+| **MAPE**     | **7.35%**   | Average percentage error                   |
+
+✅ These results indicate **strong predictive performance**.
+---
+
+### ⚙️ Selected Model & Hyperparameters
+
+The best-performing model was **Random Forest Regressor**, selected after experimentation and evaluation.
+
+```json
+{
+  "n_estimators": 300,
+  "max_depth": 30,
+  "min_samples_split": 5,
+  "min_samples_leaf": 1,
+  "max_features": "sqrt",
+  "random_state": 42
+}
+```
+
+🔹 The model effectively captures non-linear relationships between vehicle attributes and price.
+
+---
+
+## 🖥️ Web Application (UI Preview)
+
+An interactive web application was built using **FastAPI** and **HTML**, allowing users to predict BMW car prices in real time.
+
+### 🚗 Application Features
+
+1. User enters car details (model, year, mileage, fuel type, transmission, road tax, mpg, engine size)
+2. Inputs are preprocessed using saved encoders and scalers
+3. Model generates a price prediction
+4. Prediction and confidence range are displayed on the UI
+
+📸 *Add screenshots of the UI here (optional but recommended for LinkedIn visibility)*
 
 ---
 

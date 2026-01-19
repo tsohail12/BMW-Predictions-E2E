@@ -13,5 +13,8 @@ Flask
 Flask-Cors
 xgboost
 lightgbm
+fastapi
+uvicorn
+jinja2
 -e .
 
