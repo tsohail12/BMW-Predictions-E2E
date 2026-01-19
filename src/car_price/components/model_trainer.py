@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from pathlib import Path
 import joblib
 from sklearn.ensemble import RandomForestRegressor
 from car_price import logger
@@ -97,6 +98,12 @@ class ModelTrainer:
             
             # Prepare data
             X_train, y_train, X_test, y_test = self.prepare_data(train_df, test_df)
+
+            # Save feature names (VERY IMPORTANT)
+            feature_names_path = Path("artifacts/data_transformation/feature_names.pkl")
+            joblib.dump(X_train.columns.tolist(), feature_names_path)
+            logger.info(f"Feature names saved at: {feature_names_path}")
+
             
             # Train model
             model = self.train_model(X_train, y_train)

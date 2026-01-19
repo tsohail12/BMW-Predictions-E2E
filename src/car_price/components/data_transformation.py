@@ -41,6 +41,9 @@ class DataTransformation:
         df_encoded = df.copy()
         
         for col in self.config.categorical_features:
+            df_encoded[col] = df_encoded[col].astype(str).str.strip()
+        
+        for col in self.config.categorical_features:
             if is_training:
                 # Fit and transform during training
                 le = LabelEncoder()
