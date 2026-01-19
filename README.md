@@ -280,9 +280,6 @@ An interactive web application was built using **FastAPI** and **HTML**, allowin
 3. Model generates a price prediction
 4. Prediction and confidence range are displayed on the UI
 
-📸 *Add screenshots of the UI here (optional but recommended for LinkedIn visibility)*
-![Alt text for the screenshot](/Users/mohammedsohailmirza/Desktop/Screenshot 2026-01-20 at 00.29.16.png)
-
 
 ---
 
