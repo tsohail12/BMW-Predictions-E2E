@@ -85,7 +85,6 @@ class PredictionPipeline:
             # Drop original categorical columns
             df = df.drop(columns=categorical_features, errors='ignore')
             
-            # Ensure correct column order (same as training)
             # Align columns EXACTLY as training
             df = df[self.feature_names]
 

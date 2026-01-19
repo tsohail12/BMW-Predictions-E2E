@@ -16,7 +16,8 @@ print("\n1. Checking if artifacts exist...")
 artifacts_to_check = [
     ("Model", "artifacts/model_trainer/model.pkl"),
     ("Scaler", "artifacts/data_transformation/scaler.pkl"),
-    ("Encoders", "artifacts/data_transformation/label_encoders.pkl")
+    ("Encoders", "artifacts/data_transformation/label_encoders.pkl"),
+    ("Feature Name", "artifacts/data_transformation/feature_names.pkl")
 ]
 
 all_exist = True
@@ -38,6 +39,7 @@ try:
     model = joblib.load("artifacts/model_trainer/model.pkl")
     scaler = joblib.load("artifacts/data_transformation/scaler.pkl")
     label_encoders = joblib.load("artifacts/data_transformation/label_encoders.pkl")
+    feature_names = joblib.load("artifacts/data_transformation/feature_names.pkl") 
     print("   ✓ All artifacts loaded successfully!")
 except Exception as e:
     print(f"   ✗ Error loading artifacts: {e}")
@@ -46,7 +48,7 @@ except Exception as e:
 # Step 3: Test preprocessing
 print("\n3. Testing preprocessing...")
 test_data = {
-    'model': ' 3 Series',
+    'model': '3 Series',
     'year': 2019,
     'transmission': 'Semi-Auto',
     'mileage': 15000,
@@ -126,7 +128,7 @@ except Exception as e:
 print("\n5. Testing batch prediction...")
 batch_data = pd.DataFrame([
     {
-        'model': ' 1 Series',
+        'model': '1 Series',
         'year': 2018,
         'transmission': 'Manual',
         'mileage': 25000,
@@ -136,7 +138,7 @@ batch_data = pd.DataFrame([
         'engineSize': 1.5
     },
     {
-        'model': ' 5 Series',
+        'model': '5 Series',
         'year': 2020,
         'transmission': 'Automatic',
         'mileage': 10000,
